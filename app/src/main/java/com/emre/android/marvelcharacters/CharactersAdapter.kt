@@ -6,10 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.emre.android.marvelcharacters.databinding.ItemCharacterBinding
 import com.squareup.picasso.Picasso
 
-class CharactersAdapter(private var characterList: List<String> = listOf()) :
+class CharactersAdapter(private var characterList: List<Character> = listOf()) :
     RecyclerView.Adapter<CharactersAdapter.CharactersViewHolder>() {
 
-    fun setList(characterList: List<String>) {
+    fun setList(characterList: List<Character>) {
         this.characterList = characterList
         notifyDataSetChanged()
     }
@@ -22,13 +22,13 @@ class CharactersAdapter(private var characterList: List<String> = listOf()) :
     }
 
     override fun onBindViewHolder(holder: CharactersViewHolder, position: Int) {
-        val characterUrl = characterList[position]
-        if (characterUrl != "") {
-            Picasso.get()
-                .load(characterUrl)
-                .fit()
-                .into(holder.binding.characterIV)
-        }
+        val characterUrl = characterList[position].thumbnail.path
+        Picasso.get()
+            .load(Utils.appendExtensionJpgToThumbnailUrl(characterUrl))
+            .fit()
+            .into(holder.binding.characterIV)
+        holder.binding.characterTV.text = characterList[position].name
+        holder.binding.characterIV.contentDescription = characterList[position].name
     }
 
     override fun getItemCount(): Int {

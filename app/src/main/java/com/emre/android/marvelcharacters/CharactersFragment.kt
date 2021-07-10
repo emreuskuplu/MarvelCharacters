@@ -25,14 +25,15 @@ class CharactersFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val mainViewModel = MainViewModel()
         val gridLayoutManager =
             GridLayoutManager(context, 3, GridLayoutManager.VERTICAL, false)
         val charactersAdapter = CharactersAdapter()
         binding.charactersRV.adapter = charactersAdapter
         binding.charactersRV.layoutManager = gridLayoutManager
-    }
-
-    companion object {
-        fun newInstance() = CharactersFragment()
+        mainViewModel.fetchCharacters()
+        mainViewModel.charactersLiveData.observe(viewLifecycleOwner, {
+            charactersAdapter.setList(it)
+        })
     }
 }

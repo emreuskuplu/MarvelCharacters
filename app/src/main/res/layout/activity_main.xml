@@ -18,7 +18,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="MARVEL &amp; CHARACTERS"
+            android:text="@string/marvel_amp_characters"
             android:fontFamily="@font/marvel"
             android:textSize="@dimen/action_bar_title_size"/>
 
@@ -26,6 +26,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:defaultNavHost="true"
