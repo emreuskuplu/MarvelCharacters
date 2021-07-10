@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- TEXT VIEW DIMENSIONS -->
+    <dimen name="action_bar_title_size">30sp</dimen>
+    <dimen name="network_message_size">18sp</dimen>
+    <dimen name="try_again_button_text_size">14sp</dimen>
+
+    <!-- IMAGE VIEW DIMENSIONS -->
+    <dimen name="item_photo_grid_view_width">115dp</dimen>
+    <dimen name="item_photo_grid_view_height">115dp</dimen>
+    <dimen name="item_photo_list_view_height">236dp</dimen>
+
+    <!-- BUTTON DIMENSIONS -->
+    <dimen name="try_again_button_width">150dp</dimen>
+</resources>
