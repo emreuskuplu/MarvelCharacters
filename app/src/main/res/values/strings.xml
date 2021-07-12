@@ -3,4 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="marvel_amp_characters"><![CDATA[MARVEL & CHARACTERS]]></string>
+    <string name="no_content">There are no content for this character.</string>
+    <string name="comics">COMICS</string>
+    <string name="description">DESCRIPTION</string>
 </resources>

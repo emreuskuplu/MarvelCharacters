@@ -11,13 +11,21 @@
         tools:layout="@layout/fragment_characters">
         <action
             android:id="@+id/action_characters_fragment_to_character_detail_fragment"
-            app:destination="@id/character_detail_fragment" />
+            app:destination="@id/character_detail_fragment"
+            app:popUpTo="@+id/fragment_character_detail"
+            app:popUpToInclusive="true">
+        </action>
+
     </fragment>
 
     <fragment
         android:id="@+id/character_detail_fragment"
-        android:name="com.emre.android.marvelcharacters.CharactersFragment"
+        android:name="com.emre.android.marvelcharacters.CharacterDetailFragment"
         android:label="fragment_character_detail"
-        tools:layout="@layout/fragment_character_detail"/>
+        tools:layout="@layout/fragment_character_detail">
+        <argument
+            android:name="characterId"
+            app:argType="integer"/>
+    </fragment>
 
 </navigation>

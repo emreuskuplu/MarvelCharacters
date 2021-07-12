@@ -9,23 +9,13 @@ data class Data(
 )
 
 data class Character(
+    val id: Int,
     val name: String,
-    val description: String,
     val thumbnail: Thumbnail,
-    val comics: Comics
 )
 
 data class Thumbnail(
-    val path: String
-)
-
-data class Comics(
-    val returned: Int,
-    val items: List<Items>
-)
-
-data class Items(
-    val resourceURI: String,
-    val name: String
+    val path: String,
+    val extension: String
 )
 

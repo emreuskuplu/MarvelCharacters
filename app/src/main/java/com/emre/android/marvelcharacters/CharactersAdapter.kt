@@ -6,11 +6,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.emre.android.marvelcharacters.databinding.ItemCharacterBinding
 import com.squareup.picasso.Picasso
 
-class CharactersAdapter(private var characterList: List<Character> = listOf()) :
-    RecyclerView.Adapter<CharactersAdapter.CharactersViewHolder>() {
+class CharactersAdapter(
+    private var characterList: MutableList<Character> = mutableListOf(),
+    private val onClickListener: (Int) -> Unit
+) : RecyclerView.Adapter<CharactersAdapter.CharactersViewHolder>() {
 
     fun setList(characterList: List<Character>) {
-        this.characterList = characterList
+        this.characterList.addAll(characterList)
         notifyDataSetChanged()
     }
 
@@ -18,23 +20,38 @@ class CharactersAdapter(private var characterList: List<Character> = listOf()) :
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = ItemCharacterBinding.inflate(layoutInflater)
 
-        return CharactersViewHolder(binding)
+        return CharactersViewHolder(binding) {
+            onClickListener(it)
+        }
     }
 
     override fun onBindViewHolder(holder: CharactersViewHolder, position: Int) {
-        val characterUrl = characterList[position].thumbnail.path
+        val thumbnail = characterList[position].thumbnail.path
+        val extension = ".${characterList[position].thumbnail.extension}"
+
         Picasso.get()
-            .load(Utils.appendExtensionJpgToThumbnailUrl(characterUrl))
+            .load(thumbnail + extension)
             .fit()
             .into(holder.binding.characterIV)
-        holder.binding.characterTV.text = characterList[position].name
-        holder.binding.characterIV.contentDescription = characterList[position].name
+        holder.binding.let {
+            it.characterTV.text = characterList[position].name
+            it.characterIV.contentDescription = characterList[position].name
+        }
     }
 
     override fun getItemCount(): Int {
         return characterList.size
     }
 
-    class CharactersViewHolder(val binding: ItemCharacterBinding) :
-        RecyclerView.ViewHolder(binding.root)
+    inner class CharactersViewHolder(
+        val binding: ItemCharacterBinding,
+        onItemClicked: (Int) -> Unit
+    ) : RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.characterIV.setOnClickListener {
+                onItemClicked(characterList[adapterPosition].id)
+            }
+        }
+    }
 }
