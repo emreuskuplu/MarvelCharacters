@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- TEXT VIEW DIMENSIONS -->
+    <dimen name="action_bar_title_size">30sp</dimen>
+
+    <!-- IMAGE VIEW DIMENSIONS -->
+    <dimen name="item_photo_grid_view_width">115dp</dimen>
+    <dimen name="item_photo_grid_view_height">115dp</dimen>
+
+    <!-- BUTTON DIMENSIONS -->
+</resources>
